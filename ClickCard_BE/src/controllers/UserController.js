@@ -118,9 +118,9 @@ const UserController = {
 
       if (result.success) {
         return sendSuccessResponse(res, 200, result.message);
-      } else {
-        return sendErrorResponse(res, 404, result.message);
       }
+      // Use whatever status code the service returned (400/500), not always 404
+      return sendErrorResponse(res, result.statusCode || 400, result.message);
     } catch (err) {
       console.error('Resend OTP error:', err);
       return sendErrorResponse(res, 500, 'Internal server error');

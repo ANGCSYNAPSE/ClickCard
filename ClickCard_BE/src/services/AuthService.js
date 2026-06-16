@@ -254,24 +254,41 @@ const AuthService = {
 
 
   // Resend email OTP
+  // Works in two scenarios:
+  //   1. Mid-registration (no user row yet) — issues a new email_verification OTP
+  //   2. Existing user (e.g. password reset / login OTP) — same, but with a name
+  // The earlier `User.findByEmail` requirement broke the registration flow
+  // because the user is created only at /complete-registration.
   resendEmailOTP: async (email) => {
     try {
-      // Check if user exists
-      const user = await User.findByEmail(email);
-      if (!user) {
-        return { success: false, message: 'User not found', statusCode: 404 };
+      if (!email || !validateEmail(email)) {
+        return { success: false, message: 'Invalid email address', statusCode: 400 };
       }
 
-      // Generate new OTP
+      const user = await User.findByEmail(email).catch(() => null);
+      const userName = user ? (user.first_name || 'User') : 'User';
+
+      // Generate new OTP (overwrites/invalidates any prior unverified OTP).
       const otpResult = await OTP.generate(email, 'email_verification');
       if (!otpResult) {
         return { success: false, message: 'Failed to generate OTP', statusCode: 500 };
       }
 
-      const emailResult = await sendOTPEmail(email, otpResult.otp_code, 'email_verification');
+      const emailResult = await sendOTPEmail(
+        email,
+        otpResult.otp_code,
+        'email_verification',
+        userName,
+      );
 
+      // emailService now falls back to console-logging the OTP when SMTP is
+      // not configured, so this only fails on truly catastrophic errors.
       if (!emailResult.success) {
-        return { success: false, message: `Failed to send OTP: ${emailResult.error}`, statusCode: 500 };
+        return {
+          success: false,
+          message: `Failed to send OTP: ${emailResult.error || emailResult.message}`,
+          statusCode: 500,
+        };
       }
 
       return {

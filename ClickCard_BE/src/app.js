@@ -70,6 +70,33 @@ app.get('/health', (req, res) => {
   res.json({ status: 'OK', message: 'ClickCard API is running' });
 });
 
+// Config status — shows which integrations are configured. Useful for
+// debugging which OAuth / SMTP / payment env vars you've forgotten to set on
+// Vercel. Never leaks the secrets themselves.
+app.get('/status', (req, res) => {
+  res.json({
+    status: 'OK',
+    database: !!process.env.DATABASE_URL,
+    jwt: {
+      accessSecret: !!process.env.JWT_SECRET,
+      refreshSecret: !!process.env.REFRESH_TOKEN_SECRET,
+    },
+    email: {
+      configured: !!(process.env.EMAIL_USER && process.env.EMAIL_PASSWORD),
+      devModeForced: process.env.EMAIL_DEV_MODE === 'true',
+      from: process.env.EMAIL_FROM || process.env.EMAIL_USER || null,
+    },
+    auth: {
+      google: !!process.env.GOOGLE_CLIENT_ID,
+      apple: !!process.env.APPLE_CLIENT_ID,
+    },
+    payments: {
+      provider: process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET ? 'razorpay' : 'stub',
+      webhookSecret: !!process.env.RAZORPAY_WEBHOOK_SECRET,
+    },
+  });
+});
+
 // API docs redirect
 app.get('/', (req, res) => {
   res.redirect('/api-docs');
