@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #1b1140;
+  --surface: #ffffff;
+  --muted: #f5f2ff;
+  --font-jakarta: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sora: "Sora", system-ui, sans-serif;
+}
+
+.dark {
+  --background: #0c0820;
+  --foreground: #f5f3ff;
+  --surface: #161033;
+  --muted: #1d1640;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .perspective {
+    perspective: 1400px;
+  }
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+  .text-gradient {
+    background: linear-gradient(120deg, #7c3aed 0%, #ff5db1 45%, #ff9d4d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+  .dark .glass {
+    background: rgba(22, 16, 51, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .ring-gradient {
+    background:
+      linear-gradient(#fff, #fff) padding-box,
+      linear-gradient(120deg, #7c3aed, #ff5db1, #ff9d4d) border-box;
+    border: 2px solid transparent;
+  }
+  .dark .ring-gradient {
+    background:
+      linear-gradient(#161033, #161033) padding-box,
+      linear-gradient(120deg, #7c3aed, #ff5db1, #ff9d4d) border-box;
+  }
+  .shimmer-text {
+    background: linear-gradient(90deg, #7c3aed, #ff5db1, #ff9d4d, #22d3ee, #7c3aed);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* auto-scrolling marquee */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 50s linear infinite;
+  will-change: transform;
+}
+.marquee-pause:hover .animate-marquee {
+  animation-play-state: paused;
+}

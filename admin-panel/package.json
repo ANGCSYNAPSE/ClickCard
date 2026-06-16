@@ -1,0 +1,39 @@
+{
+  "name": "clickcard-admin",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3002",
+    "build": "next build",
+    "start": "next start -p 3002",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.12.0",
+    "axios": "^1.17.0",
+    "clsx": "^2.1.1",
+    "formik": "^2.4.9",
+    "framer-motion": "^12.40.0",
+    "js-cookie": "^3.0.8",
+    "lucide-react": "^1.17.0",
+    "next": "14.2.35",
+    "qrcode.react": "^4.2.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-redux": "^9.3.0",
+    "recharts": "^3.8.1",
+    "socket.io-client": "^4.8.3",
+    "yup": "^1.7.1"
+  },
+  "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  }
+}

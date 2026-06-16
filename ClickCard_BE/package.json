@@ -1,0 +1,47 @@
+{
+  "name": "clickcard-backend",
+  "version": "1.0.0",
+  "description": "ClickCard Backend with Authentication APIs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "seed:admin": "node src/scripts/seedAdmin.js"
+  },
+  "keywords": [
+    "clickcard",
+    "authentication",
+    "api"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "bcryptjs": "^3.0.3",
+    "body-parser": "^1.20.2",
+    "cloudinary": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.0",
+    "google-auth-library": "^10.7.0",
+    "jsonwebtoken": "^9.0.0",
+    "jwks-rsa": "^4.0.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.1",
+    "pdfkit": "^0.18.0",
+    "pg": "^8.9.0",
+    "puppeteer-core": "^25.1.0",
+    "qrcode": "^1.5.4",
+    "razorpay": "^2.9.6",
+    "slugify": "^1.6.9",
+    "socket.io": "^4.8.3",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
+    "uuid": "^9.0.0",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
