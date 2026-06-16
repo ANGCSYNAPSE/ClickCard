@@ -65,7 +65,7 @@ export const analyticsService = {
   track: (payload: TrackPayload) => {
     const base =
       process.env.NEXT_PUBLIC_API_BASE_URL ||
-      "https://click-card-be.vercel.app";
+      "https://clickcard-backend.vercel.app";
     return axios.post<ApiResponse<{ recorded: boolean }>>(
       `${base}${ANALYTICS_ROUTES.track}`,
       payload,

@@ -7,7 +7,7 @@ import { tokenService } from "./tokenService";
 import { AUTH_ROUTES } from "@/apiRoutes";
 
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "https://click-card-be.vercel.app";
+  process.env.NEXT_PUBLIC_API_BASE_URL || "https://clickcard-backend.vercel.app";
 
 /** Routes that must never trigger a refresh-retry loop. */
 const NO_REFRESH_PATHS = [
