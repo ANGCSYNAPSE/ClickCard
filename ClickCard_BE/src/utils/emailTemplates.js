@@ -55,7 +55,7 @@ const emailTemplates = {
           <div class="footer">
             <p><strong>ClickCard Inc.</strong></p>
             <p>© 2026 ClickCard. All rights reserved.</p>
-            <p>This is an automated message. Please do not reply to this email.</p>
+            <p>Questions? Reply to this email or contact us at amangsipl@gmail.com</p>
           </div>
         </div>
       </body>
@@ -117,7 +117,7 @@ const emailTemplates = {
           <div class="footer">
             <p><strong>ClickCard Inc.</strong></p>
             <p>© 2026 ClickCard. All rights reserved.</p>
-            <p>This is an automated message. Please do not reply to this email.</p>
+            <p>Questions? Reply to this email or contact us at amangsipl@gmail.com</p>
           </div>
         </div>
       </body>
@@ -246,7 +246,7 @@ const emailTemplates = {
           <div class="footer">
             <p><strong>ClickCard Inc.</strong></p>
             <p>© 2026 ClickCard. All rights reserved.</p>
-            <p>This is an automated message. Please do not reply to this email.</p>
+            <p>Questions? Reply to this email or contact us at amangsipl@gmail.com</p>
           </div>
         </div>
       </body>
